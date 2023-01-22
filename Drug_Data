@@ -1,0 +1,21 @@
+import csv
+import os
+import numpy as np
+import pandas as pd
+import statistics
+import xlrd
+import seaborn
+from matplotlib import pyplot
+from scipy.stats import pearsonr
+
+cwd = os.getcwd()
+print(cwd)
+file_excel= pd.read_excel(r'C:\Ilia\Personal Projects\Drugs, Alcohol, Substances\DAS Report Stats.xlsx')
+workbook = xlrd.open_workbook('C:\Ilia\Personal Projects\Drugs, Alcohol, Substances\DAS Report Stats.xlsx')
+print(file_excel)
+#print(file_excel['State'])
+#print(file_excel['Teens Using Drugs'])
+mean = statistics.mean(file_excel['Teens Using Drugs'])
+pyplot.scatter(file_excel['Teens Using Drugs'],file_excel['Teens Drinking'])
+corr = pearsonr(file_excel['Teens Using Drugs'],file_excel['Teens Drinking'])
+print(corr)
